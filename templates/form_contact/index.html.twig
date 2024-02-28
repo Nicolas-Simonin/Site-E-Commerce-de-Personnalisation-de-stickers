@@ -1,0 +1,52 @@
+{% extends 'homepage.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+    <div class="Center">
+        {{ form_start(post_form_contact, {'attr': {'id': 'sticker_post_form', 'onsubmit' :"return confirm('Voulez-vous envoyer se message ?')"}}) }}
+        <div class="WhiteDIV" style="color: #000e26">
+            {% for message in app.flashes('success') %}
+                <div style="padding-top: 3%">
+                    <h1 style="width: 50%;background-color: green; border-radius: 10px; margin-left: auto; margin-right: auto; color: white"> {{ message }} </h1>
+                </div>
+            {% endfor %}
+            <h2 style="padding-top: 3%">Vous voulez nous contactez ?</h2>
+            <h3 style="padding:2%"> Voici nos mails : </h3>
+            <ul style="list-style: none">
+                <li>
+                    corentinwatisse@gmail.com
+                </li>
+                <li>
+                    simonin.nico@gmail.com
+                </li>
+                <li>
+                    jaune02110@hotmail.fr
+                </li>
+            </ul>
+
+            <h3 style="padding:2%"> Nous contacter directement : </h3>
+
+            <div>
+                <div style="padding-bottom: 3%">
+                    <h4 style="padding-bottom: 1%">Votre Adresse Email (beta : envois le message à cette adresse)
+                        : </h4>
+                    <label for="email"></label><input style="width: 70%" id="email" name="email" type="email"
+                                                      maxlength="50" placeholder="example@email.com" required>
+                </div>
+                <label>
+<textarea
+        style="width: 90%; padding: 20px; resize: none" rows='5' cols='60' name='message' id="message"
+        placeholder="Laissez nous un message ainsi que votre e-mail pour que nous puissions vous recontactez dans les plus brefs délais"
+        minlength="10" required>
+</textarea>
+                </label>
+            </div>
+            <div class="Center" style="padding:2%">
+                {{ form_end(post_form_contact) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

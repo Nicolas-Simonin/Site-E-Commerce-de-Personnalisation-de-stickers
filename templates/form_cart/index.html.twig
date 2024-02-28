@@ -1,0 +1,100 @@
+{% extends 'homepage.html.twig' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+
+    <div class="Center" xmlns="http://www.w3.org/1999/html">
+        {{ form_start(post_cart, {'attr': {'id': 'post_cart'}}) }}
+        <div class="flex-container">
+            <div class="flex-child">
+                <div class="WhiteDIV" style="color: #000e26;width: 90%">
+                    <h3 style="margin-bottom: 3%">Récapitulatif de la commande : </h3>
+                    <hr>
+
+
+                    <div class="UnProduit">
+
+                        <table id='commande'>
+                            <thead>
+                            <td style="width: 70%"> Produit :</td>
+                            <td style="width: 20%"> Quantité :</td>
+                            <td style="width: 5%"> Prix :</td>
+                            <td style="width: 5%"></td>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="flex-child">
+                <div class="WhiteDIV" style="color: #000e26;width: 90%; background-color: unset; border:unset">
+
+
+                    <div class="SectionInWhiteDiv">
+                        <h3>Information personnelle : </h3>
+                        <hr>
+                        <div class="flex-container">
+                            <div class="flex-child">
+                                <label> Nom <input class="InpuType" name="name" type="text" style="width:80%"
+                                                   required
+                                    /> </label>
+                            </div>
+                            <div class="flex-child">
+                                <label> Prénom <input class="InpuType" name="lastName" type="text"
+                                                      style="width:80%"
+                                                      required/> </label>
+                            </div>
+                            <div class="flex-child">
+                                <label> Date de naissance <input class="InpuType" type="date" name="bday"
+                                                                 style="width:50%" required/> </label>
+                            </div>
+                        </div>
+
+                        <label> Adresse Livraison <input class="InpuType" style="width: 94%" name="address"
+                                                         type="text" required/> </label>
+
+                        <label> Email <input type="email" name="email"
+                                             style="width: 94%; text-align: center"
+                                             class="InpuType" placeholder="votre@email.fr"
+                                             required/> </label>
+                    </div>
+
+                    <div class="SectionInWhiteDiv">
+                        <h3> Information de votre Carte : </h3>
+                        <hr>
+
+                        <div class="form-row">
+                            <label for="card-element">
+                                Credit or debit card
+                            </label>
+                            <div id="card-element">
+                            </div>
+
+                            <div id="card-errors" role="alert"></div>
+                        </div>
+
+                    </div>
+                    {{ form_end(post_cart) }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src={{ asset('js/jquery.cookie.js') }}></script>
+    <script src="{{ asset('js/Cart.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'homepage.html.twig' %}
+
+{% block title %}Personalisation Stickers{% endblock %}
+
+{% block body %}
+
+
+    <div class="Center">
+        <div class="WhiteDIV" id="detector">
+            {{ form_start(post_form_stickers, {'attr': {'id': 'sticker_post_form', 'onsubmit' :"return confirm('Voulez vous vraiment ajouter cet article au panier ?')"}}) }}
+            <div class="SVG_Displayed">
+                <svg width="100%" height="30%" xmlns="http://www.w3.org/2000/svg">
+                    <rect id="stickers" x="5%" y="20%" width="90%" height="65%" rx="15" ry="15"
+                          style="fill: #a1bad3"/>
+                    <text id="fullNameDisplayed" x="50%" y="58%" text-anchor="middle"
+                          style='font-size:1.75em;font-family:Verdana,serif;fill: #ffffff'>Jean Louis
+                    </text>
+                    <image id="StickersPicture" x="75%" y="36%" width="50" height="50"/>
+                </svg>
+            </div>
+
+            <div>
+                <div class="flex-container">
+                    <div class="flex-child">
+                        <label for="stickersName"><input style="width:80%" class="InpuType"
+                                                         id="stickersName" name="stickersName" type="text"
+                                                         maxlength="15" placeholder="Nom"></label>
+                    </div>
+                    <div class="flex-child">
+                        <label for="stickersLastName"><input style="width:80%" class="InpuType" size="10"
+                                                             id="stickersLastName" name="stickersLastName" type="text"
+                                                             maxlength="15" placeholder="Prénom"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-container">
+                <div class="flex-child">
+                    <p class="LabelSticker"> Couleur du texte </p>
+                    <label for="textcolor"><input class="InpuType" type="color" id="textColor"
+                                                  name="textColor" value="#ffffff"></label>
+                </div>
+                <div class="flex-child">
+                    <p class="LabelSticker">Choix de logo </p>
+                    <label for="logoChoice"><input style="width:30%" class="InpuType" type="number" id="logoChoice"
+                                                  name="logoChoice" value="0" min="0" max="3"></label>
+                </div>
+                <div class="flex-child">
+                    <p class="LabelSticker">Couleur de fond </p>
+                    <label for="backColor"><input class="InpuType" type="color" id="backColor"
+                                                  name="backColor" value="#a1bad3"></label>
+                </div>
+            </div>
+            <div>
+                {{ form_end(post_form_stickers) }}
+            </div>
+            <script src="{{ asset('js/Stickers.js') }}"></script>
+
+        </div>
+    </div>
+{% endblock %}

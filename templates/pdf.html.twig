@@ -1,0 +1,52 @@
+{% extends 'homepage.html.twig' %}
+
+{% block title %}PDF Download{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div style="padding-top: 3%">
+            <h1 style="width: 50%;background-color: green; border-radius: 10px; margin-left: auto; margin-right: auto; color: white"> {{ message }} </h1>
+            <form action=""></form>
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div style="padding-top: 3%">
+            <h1 style="width: 50%;background-color: red; border-radius: 10px; margin-left: auto; margin-right: auto; color: white"> {{ message }} </h1>
+        </div>
+    {% endfor %}
+
+
+    <div class="WhiteDIV" style="color: #000e26;width: 90%">
+        <h3 style="margin-bottom: 3%">Récapitulatif de la commande : </h3>
+        <hr>
+
+
+        <div class="UnProduit">
+
+            <table id='commande'>
+                <thead>
+                <td id="TDSvg" style="width: 70%"> Produit :</td>
+                <td id="TDQuantity" style="width: 20%"> Quantité :</td>
+                <td id="TDPrice" style="width: 5%"> Prix :</td>
+                </thead>
+
+            </table>
+        </div>
+        <button class="buttonCart" onClick="printJS({printable:'commande', type:'html', header: '<h3> Récapitulatif de votre commande : </h3>', scanStyles:false,
+    style :'#TDSvg {width:2000px !important; color:rgba(0,0,0,0);} h3 {color:black; position:fixed; top:0;}',
+    ignoreElements: ['TDQuantity', 'TDPrice', 'TDCancel', 'CellForQuantity', 'CellForPrice', 'CellForCancel'], targetStyles: ['*']})">
+            Print PDF
+        </button>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src={{ asset('js/jquery.cookie.js') }}></script>
+    <script src="{{ asset('js/print.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/print.min.css') }}">
+    <script src="{{ asset('js/hiddenPDF.js') }}"></script>
+{% endblock %}

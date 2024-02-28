@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+
+    {% block stylesheets %}
+
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>
+            {% block title %}
+                Index Projet : E-Commerce
+            {% endblock %}
+        </title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+              integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+              crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.ico') }}"/>
+
+
+
+    {% endblock %}
+
+</head>
+<body style="background-image:url('{{ asset('images/back.jpg') }}')">
+
+<header>
+    <a href="http://www.insset.u-picardie.fr/" class="logo"><img src="{{ asset('images/logo.png') }}" alt="INSSET"/>
+    </a>
+    <ul class="navig">
+        <li><a href="{{ path('app_homepage') }}"> Accueil </a></li>
+        <li><a href="{{ path('app_formStickers') }}"> Stickers </a></li>
+        <li><a href="{{ path('app_formCart') }}"> Panier </a></li>
+        <li><a href="{{ path('app_formContact') }}"> Messages </a></li>
+    </ul>
+
+</header>
+
+<div class="Center">
+    <div id="main">
+
+
+        {% block body %}
+            {% for message in app.flashes('success') %}
+                <div style="padding-top: 3%">
+                    <h1 style="width: 50%;background-color: green; border-radius: 10px; margin-left: auto; margin-right: auto; color: white"> {{ message }} </h1>
+                    <form action=""></form>
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div style="padding-top: 3%">
+                    <h1 style="width: 50%;background-color: red; border-radius: 10px; margin-left: auto; margin-right: auto; color: white"> {{ message }} </h1>
+                </div>
+            {% endfor %}
+        {% endblock %}
+
+
+    </div>
+</div>
+
+<div class="footer">
+    <div id="container">
+
+        <div class="footer_center">
+            <div class="flex-container">
+                <div class="flex-child"> INSSET | 2020-2021
+                </div>
+                <div class="flex-child" style="text-align: right"> Gaylor Doisy, Simonin Nicolas, Watissé Corentin
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% block javascripts %}
+
+{% endblock %}
+
+</body>
+</html>
